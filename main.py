@@ -9,7 +9,7 @@ def index():
 
 @app.route('/teleop', methods=['POST'])
 def receive_teleop_command():
-    command = request.form['command']
+    command = request.json['command']
     teleop(command)
     return 'Command received'
 
