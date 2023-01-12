@@ -73,9 +73,12 @@ def teleop(command):
         msg.value = -(0.5)
     
     else:
-        return
+        msg.cmd_id = 0x00
+        msg.value = 0.0
+
     teleop_cmd.publish(msg)
     rclpy.spin_once(node)
+    
 
 
 
