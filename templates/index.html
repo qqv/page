@@ -1,29 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo for Diablo Control Panel</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
+
 <body>
-    <form>
-        <button type="button" onclick="sendCommand('w')">Move Forward</button>
-        <button type="button" onclick="sendCommand('a')">Move Left</button>
-        <button type="button" onclick="sendCommand('s')">Move Backward</button>
-        <button type="button" onclick="sendCommand('d')">Move Right</button>
+  <div class="bs-docs-section clearfix">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="bs-component">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Panel</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Home
+                      <span class="visually-hidden">(current)</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <br>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-lg-7">
+      <form>
+        <button type="button" class="btn btn-primary" onclick="sendCommand('w')">Move Forward</button>
+        <button type="button" class="btn btn-primary" onclick="sendCommand('a')">Move Left</button>
+        <button type="button" class="btn btn-primary" onclick="sendCommand('s')">Move Backward</button>
+        <button type="button" class="btn btn-primary" onclick="sendCommand('d')">Move Right</button>
       </form>
-      
-      <script>
-        function sendCommand(command) {
-          fetch('http://localhost:5000/teleop', {
-            method: 'POST',
-            body: JSON.stringify({command: command}),
-            headers: { 'Content-Type': 'application/json' }
-          })
-          .then(res => res.text())
-          .then(console.log)
-        }
-      </script>
+    </div>
+  </div>
+
+  <script>
+    function sendCommand(command) {
+      fetch('http://localhost:5000/teleop', {
+          method: 'POST',
+          body: JSON.stringify({
+            command: command
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => res.text())
+        .then(console.log)
+    }
+
+  </script>
 </body>
+
 </html>
