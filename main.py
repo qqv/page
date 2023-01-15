@@ -10,8 +10,8 @@ def index():
 @app.route('/teleop', methods=['POST'])
 def teleop():
     command = request.form['command']
-    value = request.form['value']
-    teleop.run_command(command, value)
+#    value = request.form['value']
+    teleop.run_command(command)
     return 'Command sent'
 
 if __name__ == '__main__':

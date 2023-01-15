@@ -22,26 +22,29 @@ CMD_PITCH_MODE = 0x13
 
 CMD_SPEED_MODE = 0x05
 
-def run_command(command, value):
+def run_command(command):
     rclpy.init()
     node = Node("diablo_teleop_node")
     msg = MotionCtrl()
     teleop_cmd = node.create_publisher(MotionCtrl,"diablo/MotionCmd",2)
     if command == 'go_forward':
         msg.cmd_id = CMD_GO_FORWARD
-        msg.value = value
+        msg.value = 1.0
+    elif command == 'go_backward':
+        msg.cmd_id = CMD_GO_FORWARD
+        msg.value = -(1.0)
     elif command == 'go_left':
         msg.cmd_id = CMD_GO_LEFT
-        msg.value = value
-    elif command == 'roll_right':
-        msg.cmd_id = CMD_ROLL_RIGHT
-        msg.value = value
+        msg.value = 1.0
+    elif command == 'go_right':
+        msg.cmd_id = CMD_GO_LEFT
+        msg.value = -(1.0)
     elif command == 'body_up':
         msg.cmd_id = CMD_BODY_UP
-        msg.value = value
+        msg.value = 1.0
     elif command == 'pitch':
         msg.cmd_id = CMD_PITCH
-        msg.value = value
+        msg.value = 1.0
     else:
         msg.cmd_id = 0x00
         msg.value = 0.0
