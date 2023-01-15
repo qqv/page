@@ -48,6 +48,10 @@
         <button type="button" class="btn btn-primary" onclick="sendCommand('go_right')">Move Right</button>
       </form>
     </div>
+    <br>
+    <div>
+      <p>Battery Status:</p><p id="batteryStatus"></p>
+  </div>
   </div>
 
   <script>
@@ -64,6 +68,10 @@
         .then(res => res.text())
         .then(console.log)
     }
+
+    function updateBatteryStatus(status) {
+                document.getElementById("batteryStatus").innerHTML = "Battery Status: " + status + "%";
+            }
 
   </script>
 </body>

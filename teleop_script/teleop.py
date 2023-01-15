@@ -5,7 +5,9 @@ import sys
 import tty
 import termios
 from rclpy.node import Node
+# from rclpy import create_subscription
 from motion_msgs.msg import MotionCtrl
+from std_msgs.msg import String
 
 CMD_GO_FORWARD = 0x08
 CMD_GO_LEFT = 0x04
